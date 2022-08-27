@@ -7,9 +7,11 @@ namespace ZombieLand.Game.Player
         #region Variables
 
         [SerializeField] private GameObject _bulletPrefab;
-        [SerializeField] private Transform _bulletSpawnPositionTransform; 
-        private Transform _cachedTransform; 
-         
+        [SerializeField] private Transform _bulletSpawnPositionTransform;
+        [SerializeField] private float _fireDelay = 0.3f;
+
+        private Transform _cachedTransform;
+        private float _timer;
 
         #endregion
 
@@ -18,14 +20,16 @@ namespace ZombieLand.Game.Player
 
         private void Awake()
         {
-            _cachedTransform = transform; 
+            _cachedTransform = transform;
         }
 
         private void Update()
         {
+            TickTimer();
+            
             if (CanAttack())
             {
-                Attack(); 
+                Attack();
             }
         }
 
@@ -36,12 +40,18 @@ namespace ZombieLand.Game.Player
 
         private void Attack()
         {
-            Instantiate(_bulletPrefab,_bulletSpawnPositionTransform.position, _cachedTransform.rotation); 
+            Instantiate(_bulletPrefab, _bulletSpawnPositionTransform.position, _cachedTransform.rotation);
+            _timer = _fireDelay;
         }
 
         private bool CanAttack()
         {
-            return Input.GetButtonDown("Fire1");   
+            return Input.GetButton("Fire1") && _timer <= 0;
+        }
+
+        private void TickTimer()
+        {
+            _timer -= Time.deltaTime;
         }
 
         #endregion
