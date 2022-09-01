@@ -6,6 +6,8 @@ namespace ZombieLand.Game.Player
     {
         #region Variables
 
+        [SerializeField] private PlayerAnimation _playerAnimation; 
+        
         [SerializeField] private GameObject _bulletPrefab;
         [SerializeField] private Transform _bulletSpawnPositionTransform;
         [SerializeField] private float _fireDelay = 0.3f;
@@ -40,6 +42,7 @@ namespace ZombieLand.Game.Player
 
         private void Attack()
         {
+            _playerAnimation.PlayShoot();
             Instantiate(_bulletPrefab, _bulletSpawnPositionTransform.position, _cachedTransform.rotation);
             _timer = _fireDelay;
         }
