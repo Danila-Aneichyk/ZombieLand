@@ -2,15 +2,17 @@ using UnityEngine;
 
 namespace ZombieLand.Game.Player
 {
+    [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerMovement : MonoBehaviour
     {
         #region Variables
-        
+
         [SerializeField] private PlayerAnimation _playerAnimation;
 
         [SerializeField] private float _speed = 4f;
         private Transform _cachedTransform;
         private Camera _mainCamera;
+        private Rigidbody2D _rb;
 
         #endregion
 
@@ -19,8 +21,9 @@ namespace ZombieLand.Game.Player
 
         private void Awake()
         {
+            _rb = GetComponent<Rigidbody2D>();
             _cachedTransform = transform;
-            _mainCamera = Camera.main; 
+            _mainCamera = Camera.main;
         }
 
         private void Update()
@@ -38,9 +41,9 @@ namespace ZombieLand.Game.Player
             float vertical = Input.GetAxis("Vertical");
 
             Vector2 direction = new Vector2(horizontal, vertical);
-            Vector3 moveDelta = direction * (_speed * Time.deltaTime);
-            _cachedTransform.position += moveDelta;
-            
+            Vector3 moveDelta = direction * _speed;
+            _rb.velocity = moveDelta;
+
             _playerAnimation.SetSpeed(direction.magnitude);
         }
 
