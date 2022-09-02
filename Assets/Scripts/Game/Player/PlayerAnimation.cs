@@ -24,5 +24,11 @@ namespace ZombieLand.Game.Player
         }
 
         #endregion
+
+
+        public void PlayDeath()
+        {
+            
+        }
     }
 }

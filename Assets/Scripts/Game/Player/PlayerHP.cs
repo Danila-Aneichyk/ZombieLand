@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ZombieLand.Game.Player
 {
-    public class PlayerHP : MonoBehaviour
+    public class PlayerHp : MonoBehaviour
     {
         #region Variables
 
@@ -46,12 +46,12 @@ namespace ZombieLand.Game.Player
         public void ApplyDamage(int damage)
         {
             CurrentHp = Mathf.Max(0, CurrentHp - damage);
-            OnChanged?.Invoke(CurrentHp); 
+            OnChanged?.Invoke(CurrentHp);
         }
 
         public void ApplyHeal(int heal)
         {
-            CurrentHp = Mathf.Max(_maxHp, CurrentHp - heal); 
+            CurrentHp = Mathf.Min(_maxHp, CurrentHp - heal);
             OnChanged?.Invoke(CurrentHp);
         }
 
