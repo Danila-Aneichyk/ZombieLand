@@ -12,12 +12,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - EnemyAgro
+  - EnemyAttack
+  - PlayerBullet
+  - EnemyBullet
   - 
   - 
   - 
