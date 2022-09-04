@@ -8,7 +8,7 @@ namespace ZombieLand.Game.Enemy
         #region Variables
 
         [SerializeField] private float _speed = 4;
-        
+
         [SerializeField] private Transform _target;
 
         private Rigidbody2D _rb;
@@ -23,7 +23,12 @@ namespace ZombieLand.Game.Enemy
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
-            _cachedTransform = transform; 
+            _cachedTransform = transform;
+        }
+
+        private void OnDisable()
+        {
+            SetVelocity(Vector2.zero);
         }
 
         private void FixedUpdate()
@@ -32,12 +37,19 @@ namespace ZombieLand.Game.Enemy
                 return;
 
             MoveToTarget();
+            RotateToTarget(); 
         }
 
         #endregion
 
 
         #region Private methods
+
+        private void RotateToTarget()
+        {
+            Vector3 direction = (_target.position - _cachedTransform.position).normalized; 
+            SetVelocity(direction * _speed);
+        }
 
         private void MoveToTarget()
         {
@@ -53,15 +65,14 @@ namespace ZombieLand.Game.Enemy
         public void SetTarget(Transform target)
         {
             _target = target;
-            
-            if(_target == null)
+ 
+            if (_target == null)
                 SetVelocity(Vector2.zero);
         }
 
         private void SetVelocity(Vector2 velocity)
         {
-
-            _rb.velocity = velocity; 
+            _rb.velocity = velocity;
         }
 
         #endregion

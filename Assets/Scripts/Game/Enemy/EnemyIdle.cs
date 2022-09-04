@@ -13,10 +13,10 @@ namespace ZombieLand.Game.Enemy
 
         #region Unity lifecycle
 
-        private void Awake()
-        {
+        //private void Awake()
+        //{
            // _enemyMoveToPlayer.enabled = false;
-        }
+        //}
 
         #endregion
     }  
