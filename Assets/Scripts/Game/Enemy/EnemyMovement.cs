@@ -37,7 +37,20 @@ namespace ZombieLand.Game.Enemy
                 return;
 
             MoveToTarget();
-            RotateToTarget(); 
+            RotateToTarget();
+        }
+
+        #endregion
+
+
+        #region Private methods
+
+        public void SetTarget(Transform target)
+        {
+            _target = target;
+
+            if (_target == null)
+                SetVelocity(Vector2.zero);
         }
 
         #endregion
@@ -47,27 +60,17 @@ namespace ZombieLand.Game.Enemy
 
         private void RotateToTarget()
         {
-            Vector3 direction = (_target.position - _cachedTransform.position).normalized; 
-            SetVelocity(direction * _speed);
+            Vector3 direction = (_target.position - _cachedTransform.position);
+            _cachedTransform.up = direction;
         }
+
+        private bool IsTargetValid() =>
+            _target != null;
 
         private void MoveToTarget()
         {
             Vector3 direction = (_target.position - _cachedTransform.position).normalized;
             SetVelocity(direction * _speed);
-        }
-
-        private bool IsTargetValid()
-        {
-            return _target != null;
-        }
-
-        public void SetTarget(Transform target)
-        {
-            _target = target;
- 
-            if (_target == null)
-                SetVelocity(Vector2.zero);
         }
 
         private void SetVelocity(Vector2 velocity)

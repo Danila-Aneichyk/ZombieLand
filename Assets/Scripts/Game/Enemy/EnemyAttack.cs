@@ -13,7 +13,7 @@ namespace ZombieLand.Game.Enemy
         [SerializeField] private float _radius;
         [SerializeField] private LayerMask _layerMask;
 
-        private float _delayTimer;
+        [SerializeField] private float _delayTimer;
 
         #endregion
 
@@ -56,11 +56,12 @@ namespace ZombieLand.Game.Enemy
             if (col == null)
                 return;
 
-            PlayerHp _playerHp = col.GetComponentInParent<PlayerHp>(); 
-            if (_playerHp != null)
+            PlayerHp playerHp = col.GetComponentInParent<PlayerHp>(); 
+            if (playerHp != null)
             {
-                _playerHp.ApplyDamage(_damage); 
+                playerHp.ApplyDamage(_damage); 
             }
+            Debug.Log("Enemy attack");
         }
 
         #endregion

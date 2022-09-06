@@ -1,9 +1,10 @@
 ﻿using System;
+using TDS.Game.Objects;
 using UnityEngine;
 
 namespace ZombieLand.Game.Player
 {
-    public class PlayerHp : MonoBehaviour
+    public class PlayerHp : MonoBehaviour, IHealth
     {
         #region Variables
 

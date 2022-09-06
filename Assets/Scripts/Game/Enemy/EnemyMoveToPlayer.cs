@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using ZombieLand.Game.Player;
 
 namespace ZombieLand.Game.Enemy
