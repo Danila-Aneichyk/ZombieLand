@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3435375908781470094}
   - component: {fileID: 3839187291543598527}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,9 +95,10 @@ GameObject:
   - component: {fileID: 5136271229606374870}
   - component: {fileID: 7981877579266740402}
   - component: {fileID: -6414525133815343352}
-  m_Layer: 0
+  - component: {fileID: 5851759974510044441}
+  m_Layer: 10
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,3 +154,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 60
   _lifeTime: 1.5
+  _enemyHp: {fileID: 0}
+  _damage: 3
+--- !u!70 &5851759974510044441
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6760784322910338844}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.021954894, y: -0.087819576}
+  m_Size: {x: 0.09130144, y: 0.85138226}
+  m_Direction: 0

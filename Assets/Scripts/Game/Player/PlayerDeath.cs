@@ -29,6 +29,11 @@ namespace ZombieLand.Game.Player
             _playerHp.OnChanged += OnHpChanged; 
         }
 
+        #endregion
+
+
+        #region Private methods
+
         private void OnHpChanged(int hp)
         {
             if (IsDead || hp > 0)

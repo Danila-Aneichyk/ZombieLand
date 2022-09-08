@@ -140,9 +140,11 @@ GameObject:
   - component: {fileID: 120189351}
   - component: {fileID: 120189350}
   - component: {fileID: 120189349}
+  - component: {fileID: 120189354}
+  - component: {fileID: 120189355}
   m_Layer: 7
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,7 +157,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 120189344}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.988898, y: 2.72, z: -0.24789315}
+  m_LocalPosition: {x: 7.17, y: 2.72, z: -0.24789315}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -259,8 +261,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27af227ea2eb44adba206bc8fe73a375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startHp: 0
-  _maxHp: 0
+  _startHp: 15
+  _maxHp: 15
 --- !u!114 &120189352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,6 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c0503f70b494107827f5b54ffe7aae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 120189355}
 --- !u!114 &120189353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,6 +291,44 @@ MonoBehaviour:
   _triggerObserver: {fileID: 1603391766}
   _enemyAttack: {fileID: 120189346}
   _enemyMovement: {fileID: 120189347}
+--- !u!114 &120189354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120189344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccb6dda2648146e0821506715a0b0be4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyHp: {fileID: 120189351}
+  _enemyAttack: {fileID: 120189346}
+  _enemyAttackAgro: {fileID: 120189353}
+  _enemyMovement: {fileID: 120189347}
+  _enemyAnimation: {fileID: 120189352}
+  _enemyMoveToPlayer: {fileID: 120189348}
+--- !u!95 &120189355
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120189344}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +474,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 728364143}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.71, y: -0.36, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -453,9 +494,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.63817835, y: 0}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 4.25
+  m_Radius: 6.49
 --- !u!114 &728364146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,7 +533,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836780559}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 1.76, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -610,7 +651,7 @@ GameObject:
   - component: {fileID: 1464626376}
   m_Layer: 7
   m_Name: 'EnemyBody '
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -675,7 +716,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1464626373}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -764,6 +805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerAnimation: {fileID: 1597143384}
+  _enemyHp: {fileID: 120189351}
   _bulletPrefab: {fileID: 6760784322910338844, guid: 3c764f0a5fba6c44992b2ada5b0bb56a, type: 3}
   _bulletSpawnPositionTransform: {fileID: 1103825098}
   _fireDelay: 0.5
@@ -874,9 +916,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.63817835, y: 0}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2.05
+  m_Radius: 2.1
 --- !u!4 &1603391768
 Transform:
   m_ObjectHideFlags: 0
@@ -885,7 +927,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603391765}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.71, y: -0.36, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

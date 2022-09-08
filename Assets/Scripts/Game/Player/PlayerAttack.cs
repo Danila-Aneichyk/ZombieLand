@@ -1,4 +1,5 @@
 using UnityEngine;
+using ZombieLand.Game.Enemy;
 
 namespace ZombieLand.Game.Player
 {
@@ -6,8 +7,8 @@ namespace ZombieLand.Game.Player
     {
         #region Variables
 
-        [SerializeField] private PlayerAnimation _playerAnimation; 
-        
+        [SerializeField] private PlayerAnimation _playerAnimation;
+        [SerializeField] private EnemyHp _enemyHp;
         [SerializeField] private GameObject _bulletPrefab;
         [SerializeField] private Transform _bulletSpawnPositionTransform;
         [SerializeField] private float _fireDelay = 0.3f;
@@ -28,7 +29,7 @@ namespace ZombieLand.Game.Player
         private void Update()
         {
             TickTimer();
-            
+
             if (CanAttack())
             {
                 Attack();
@@ -42,9 +43,9 @@ namespace ZombieLand.Game.Player
 
         private void Attack()
         {
+            _timer = _fireDelay;
             _playerAnimation.PlayShoot();
             Instantiate(_bulletPrefab, _bulletSpawnPositionTransform.position, _cachedTransform.rotation);
-            _timer = _fireDelay;
         }
 
         private bool CanAttack()
@@ -56,7 +57,7 @@ namespace ZombieLand.Game.Player
         {
             _timer -= Time.deltaTime;
         }
-
-        #endregion
     }
+
+    #endregion
 }

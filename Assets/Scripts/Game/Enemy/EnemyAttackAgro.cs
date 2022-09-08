@@ -34,13 +34,13 @@ namespace ZombieLand.Game.Enemy
 
         #region Private methods
 
-        private void OnExited(Collider2D col)
+        private void OnEntered(Collider2D col)
         {
             _isInRange = true;
             _enemyMovement.enabled = false;
         }
 
-        private void OnEntered(Collider2D col)
+        private void OnExited(Collider2D col)
         {
             _isInRange = false;
             _enemyMovement.enabled = true;

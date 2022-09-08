@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using ZombieLand.Game.Enemy;
 
 namespace ZombieLand.Game.Objects
 {
@@ -10,8 +11,9 @@ namespace ZombieLand.Game.Objects
 
         [SerializeField] private float _speed = 10f;
         [SerializeField] private float _lifeTime = 3f;
+        [SerializeField] private int _damage = 3;
 
-        private Rigidbody2D _rb; 
+        private Rigidbody2D _rb;
 
         #endregion
 
@@ -22,17 +24,24 @@ namespace ZombieLand.Game.Objects
         {
             _rb = GetComponent<Rigidbody2D>();
             _rb.velocity = (transform.up * _speed);
-            StartCoroutine(LifeTimeTimer()); 
+            StartCoroutine(LifeTimeTimer());
         }
 
         IEnumerator LifeTimeTimer()
         {
-            yield return new WaitForSeconds(_lifeTime); 
-            
+            yield return new WaitForSeconds(_lifeTime);
+
             Destroy(gameObject);
         }
 
-        #endregion
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (col.gameObject.CompareTag("Enemy"))
+            {
+                FindObjectOfType<EnemyHp>().ApplyDamage(_damage);
+            }
+        }
 
+        #endregion
     }
 }
