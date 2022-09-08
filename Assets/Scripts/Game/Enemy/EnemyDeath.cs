@@ -18,9 +18,9 @@ namespace ZombieLand.Game.Enemy
         #endregion
 
 
-        #region Properties 
+        #region Properties
 
-        public bool IsDead { get; private set; }
+        private bool IsDead { get; set; }
 
         #endregion
 
