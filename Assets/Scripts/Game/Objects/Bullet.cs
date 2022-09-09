@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using ZombieLand.Game.Enemy;
+using ZombieLand.Game.Player;
 
 namespace ZombieLand.Game.Objects
 {
@@ -38,7 +39,7 @@ namespace ZombieLand.Game.Objects
         {
             if (col.gameObject.CompareTag("Enemy"))
             {
-                FindObjectOfType<EnemyHp>().ApplyDamage(_damage);
+                col.gameObject.GetComponentInParent<EnemyHp>().ApplyDamage(_damage);
             }
         }
 

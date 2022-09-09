@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using ZombieLand.Game.Player;
 
 namespace ZombieLand.Game.Enemy
@@ -32,6 +33,12 @@ namespace ZombieLand.Game.Enemy
         private void OnExited(Collider2D other)
         {
             SetTarget(null);
+        }
+
+        private void OnDisable()
+        {
+            _triggerObserver.OnEntered -= OnEntered;
+            _triggerObserver.OnExited -= OnExited;
         }
 
         #endregion
