@@ -41,6 +41,7 @@ namespace ZombieLand.Game.Enemy
         {
             if (IsDead || hp > 0)
                 return;
+            Debug.Log("Enemy died");
             IsDead = true; 
             _enemyAnimation.PlayDeath();
             _enemyAttack.enabled = false;

@@ -40,6 +40,7 @@ namespace ZombieLand.Game.Player
                 return;
 
             IsDead = true;
+            Debug.Log("Player died");
             _playerAnimation.PlayDeath();
             _playerMovement.enabled = false;
             _playerAttack.enabled = false; 

@@ -28,7 +28,7 @@ namespace ZombieLand.Game.Player
 
         public void PlayDeath()
         {
-            
+            _animator.SetTrigger("IsDead");
         }
     }
 }
