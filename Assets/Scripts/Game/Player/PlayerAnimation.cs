@@ -6,7 +6,7 @@ namespace ZombieLand.Game.Player
     {
         #region Variables
 
-        [SerializeField] private Animator _animator; 
+        [SerializeField] private Animator _animator;
 
         #endregion
 

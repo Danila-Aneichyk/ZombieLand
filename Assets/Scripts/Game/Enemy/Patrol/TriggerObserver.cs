@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace ZombieLand.Game.Enemy
+namespace ZombieLand.Game.Enemy.Patrol
 {
     public class TriggerObserver : MonoBehaviour
     {

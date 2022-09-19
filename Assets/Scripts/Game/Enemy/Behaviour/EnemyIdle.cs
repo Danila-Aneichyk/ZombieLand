@@ -1,8 +1,6 @@
-﻿using UnityEngine;
-
-namespace ZombieLand.Game.Enemy
+﻿namespace ZombieLand.Game.Enemy.Behaviour
 {
-    public class EnemyIdle : MonoBehaviour
+    public class EnemyIdle : EnemyBehaviour
     {
         #region Variables
 

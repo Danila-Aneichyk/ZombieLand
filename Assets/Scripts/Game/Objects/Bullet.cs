@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using ZombieLand.Game.Enemy;
-using ZombieLand.Game.Player;
+using ZombieLand.Game.Enemy.Hp;
 
 namespace ZombieLand.Game.Objects
 {

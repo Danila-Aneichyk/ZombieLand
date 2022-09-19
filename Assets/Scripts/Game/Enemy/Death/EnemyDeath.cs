@@ -1,16 +1,18 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+using ZombieLand.Game.Enemy.Attack;
+using ZombieLand.Game.Enemy.Hp;
+using ZombieLand.Game.Enemy.Movement;
 
-namespace ZombieLand.Game.Enemy
+namespace ZombieLand.Game.Enemy.Death
 {
     public class EnemyDeath : MonoBehaviour
     {
         #region Variables
 
         [SerializeField] private EnemyHp _enemyHp;
-        [SerializeField] private EnemyAttack _enemyAttack;
+        [SerializeField] private EnemyMeleeAttack enemyMeleeAttack;
         [SerializeField] private EnemyAttackAgro _enemyAttackAgro;
-        [SerializeField] private EnemyMovement _enemyMovement;
+        [SerializeField] private EnemyDirectMovement enemyDirectMovement;
         [SerializeField] private EnemyAnimation _enemyAnimation;
         [SerializeField] private EnemyMoveToPlayer _enemyMoveToPlayer;
         
@@ -44,8 +46,8 @@ namespace ZombieLand.Game.Enemy
             Debug.Log("Enemy died");
             IsDead = true; 
             _enemyAnimation.PlayDeath();
-            _enemyAttack.enabled = false;
-            _enemyMovement.enabled = false;
+            enemyMeleeAttack.enabled = false;
+            enemyDirectMovement.enabled = false;
             _enemyAttackAgro.enabled = false;
             _enemyMoveToPlayer.enabled = false;
         }

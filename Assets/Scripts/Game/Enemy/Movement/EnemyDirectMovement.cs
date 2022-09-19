@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 
-namespace ZombieLand.Game.Enemy
+namespace ZombieLand.Game.Enemy.Movement
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class EnemyMovement : MonoBehaviour
+    public class EnemyDirectMovement : EnemyMovement
     {
         #region Variables
 
         [SerializeField] private float _speed = 4;
 
         [SerializeField] private Transform _target;
+
+        [SerializeField] private EnemyAnimation _enemyAnimation; 
 
         private Rigidbody2D _rb;
 
@@ -26,11 +28,6 @@ namespace ZombieLand.Game.Enemy
             _cachedTransform = transform;
         }
 
-        private void OnDisable()
-        {
-            SetVelocity(Vector2.zero);
-        }
-
         private void FixedUpdate()
         {
             if (!IsTargetValid())
@@ -40,15 +37,20 @@ namespace ZombieLand.Game.Enemy
             RotateToTarget();
         }
 
+        private void OnDisable()
+        {
+            SetVelocity(Vector2.zero);
+        }
+
         #endregion
 
 
         #region Private methods
 
-        public void SetTarget(Transform target)
+        public override void SetTarget(Transform target)
         {
             _target = target;
-
+            Debug.Log("TargetSet");
             if (_target == null)
                 SetVelocity(Vector2.zero);
         }
@@ -71,6 +73,7 @@ namespace ZombieLand.Game.Enemy
         {
             Vector3 direction = (_target.position - _cachedTransform.position).normalized;
             SetVelocity(direction * _speed);
+            _enemyAnimation.PlayWalk(direction.magnitude);
         }
 
         private void SetVelocity(Vector2 velocity)

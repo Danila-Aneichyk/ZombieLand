@@ -2,7 +2,7 @@
 using TDS.Game.Objects;
 using UnityEngine;
 
-namespace ZombieLand.Game.Enemy
+namespace ZombieLand.Game.Enemy.Hp
 {
     public class EnemyHp : MonoBehaviour, IHealth
     {

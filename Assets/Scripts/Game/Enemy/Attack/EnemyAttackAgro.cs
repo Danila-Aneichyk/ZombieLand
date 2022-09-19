@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
+using ZombieLand.Game.Enemy.Follow;
+using ZombieLand.Game.Enemy.Patrol;
 
-namespace ZombieLand.Game.Enemy
+namespace ZombieLand.Game.Enemy.Attack
 {
     public class EnemyAttackAgro : MonoBehaviour
     {
         #region Variables
 
         [SerializeField] private TriggerObserver _triggerObserver;
-        [SerializeField] private EnemyAttack _enemyAttack;
-        [SerializeField] private EnemyMovement _enemyMovement;
-
-        private bool _isInRange;
+        [SerializeField] private EnemyAttack _attack;
+        [SerializeField] private EnemyFollow _enemyFollow;
 
         #endregion
 
@@ -23,12 +23,6 @@ namespace ZombieLand.Game.Enemy
             _triggerObserver.OnExited += OnExited;
         }
 
-        private void Update()
-        {
-            if (_isInRange)
-                _enemyAttack.Attack();
-        }       
-
         #endregion
 
 
@@ -36,14 +30,14 @@ namespace ZombieLand.Game.Enemy
 
         private void OnEntered(Collider2D col)
         {
-            _isInRange = true;
-            _enemyMovement.enabled = false;
+            _enemyFollow.Deactivate();
+            _attack.Activate();
         }
 
         private void OnExited(Collider2D col)
         {
-            _isInRange = false;
-            _enemyMovement.enabled = true;
+            _attack.Deactivate();
+            _enemyFollow.Activate();
         }
 
         #endregion

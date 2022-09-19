@@ -1,5 +1,6 @@
 using UnityEngine;
 using ZombieLand.Game.Enemy;
+using ZombieLand.Game.Enemy.Hp;
 
 namespace ZombieLand.Game.Player
 {

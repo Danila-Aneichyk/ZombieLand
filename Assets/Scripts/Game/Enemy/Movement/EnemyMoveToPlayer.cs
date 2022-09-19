@@ -1,15 +1,14 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+using ZombieLand.Game.Enemy.Follow;
 using ZombieLand.Game.Player;
 
-namespace ZombieLand.Game.Enemy
+namespace ZombieLand.Game.Enemy.Movement
 {
-    public class EnemyMoveToPlayer : MonoBehaviour
+    public class EnemyMoveToPlayer : EnemyFollow
     {
         #region Variables
 
         [SerializeField] private EnemyMovement _enemyMovement;
-        [SerializeField] private TriggerObserver _triggerObserver; 
 
         private Transform _playerTransform;
 
@@ -21,26 +20,22 @@ namespace ZombieLand.Game.Enemy
         private void Start()
         {
             _playerTransform = FindObjectOfType<PlayerHp>().transform;
-            _triggerObserver.OnEntered += OnEntered;
-            _triggerObserver.OnExited += OnExited;
         }
 
-        private void OnEntered(Collider2D col)
+        public override void Activate()
         {
+            base.Activate();
+
             SetTarget(_playerTransform);
         }
 
-        private void OnExited(Collider2D other)
+        public override void Deactivate()
         {
+            base.Deactivate();
+
             SetTarget(null);
         }
-
-        private void OnDisable()
-        {
-            _triggerObserver.OnEntered -= OnEntered;
-            _triggerObserver.OnExited -= OnExited;
-        }
-
+        
         #endregion
 
 
