@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &120189351 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4681109001108353261, guid: b1900e1dc66649a42a1353f5e467f5ae, type: 3}
-  m_PrefabInstance: {fileID: 4681109001056518474}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27af227ea2eb44adba206bc8fe73a375, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,7 +390,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597143380}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -438,7 +427,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerAnimation: {fileID: 1597143384}
-  _enemyHp: {fileID: 120189351}
   _bulletPrefab: {fileID: 6760784322910338844, guid: 3c764f0a5fba6c44992b2ada5b0bb56a, type: 3}
   _bulletSpawnPositionTransform: {fileID: 1103825098}
   _fireDelay: 0.5
@@ -753,10 +741,6 @@ PrefabInstance:
     - target: {fileID: 4681109001108353259, guid: b1900e1dc66649a42a1353f5e467f5ae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4681109001768423517, guid: b1900e1dc66649a42a1353f5e467f5ae, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1900e1dc66649a42a1353f5e467f5ae, type: 3}

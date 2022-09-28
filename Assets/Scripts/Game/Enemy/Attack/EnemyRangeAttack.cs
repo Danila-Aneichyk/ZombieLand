@@ -2,9 +2,5 @@
 {
     public class EnemyRangeAttack : EnemyAttack
     {
-        protected override void InternalAttack()
-        {
-            
-        }
     }
 }

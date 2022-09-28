@@ -4,37 +4,65 @@ using ZombieLand.Game.Enemy.Patrol;
 
 namespace ZombieLand.Game.Enemy.Follow
 {
-    public class EnemyFollowAgro : EnemyFollow 
+    public class EnemyFollowAgro : MonoBehaviour
     {
-        #region Variables
-
-        [SerializeField] private EnemyFollow _enemyFollow;
+        [SerializeField] private EnemyFollow _follow;
+        [SerializeField] private EnemyIdle _idle;
         [SerializeField] private EnemyBackToIdle _backToIdle;
         [SerializeField] private TriggerObserver _triggerObserver;
 
-        #endregion
+        [Header("Obstacles")]
+        [SerializeField] private LayerMask _obstacleMask;
 
+        private bool _isInAgro;
+        private Transform _cachedTransform;
 
-        #region Unity lifecycle
+        private void Awake()
+        {
+            _cachedTransform = transform;
+        }
 
         private void Start()
         {
-            _triggerObserver.OnEntered += OnEntered;
+            _triggerObserver.OnStayed += OnStayed;
             _triggerObserver.OnExited += OnExited;
         }
 
-        private void OnEntered(Collider2D col)
+        private void OnStayed(Collider2D other)
         {
-            _backToIdle.Deactivate();
-            _enemyFollow.Activate();
-        } 
+            if (_isInAgro)
+                return;
+
+            Vector3 currentPosition = _cachedTransform.position;
+            Vector3 direction = other.ClosestPoint(currentPosition) - (Vector2) currentPosition;
+            RaycastHit2D hit2D = Physics2D.Raycast(currentPosition, direction, direction.magnitude, _obstacleMask);
+            
+            if (hit2D.collider == null)
+            {
+                EnterFollow();
+            }
+        }
 
         private void OnExited(Collider2D other)
         {
-            _enemyFollow.Deactivate();
-            _backToIdle.Activate(); 
+            _follow.Deactivate();
+            _backToIdle.Activate();
+            _isInAgro = false;
         }
 
-        #endregion
+        private void EnterFollow()
+        {
+            _isInAgro = true;
+            if (_idle.IsActive)
+            {
+                _idle.Deactivate();
+            }
+            else
+            {
+                _backToIdle.Deactivate();
+            }
+
+            _follow.Activate();
+        }
     }
 }

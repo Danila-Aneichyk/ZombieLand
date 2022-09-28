@@ -6,16 +6,9 @@ namespace ZombieLand.Game.Enemy.Movement
 {
     public class EnemyMoveToPlayer : EnemyFollow
     {
-        #region Variables
-
-        [SerializeField] private EnemyMovement _enemyMovement;
+        [SerializeField] private EnemyMovement _movement;
 
         private Transform _playerTransform;
-
-        #endregion
-
-
-        #region Unity lifecycle
 
         private void Start()
         {
@@ -35,17 +28,10 @@ namespace ZombieLand.Game.Enemy.Movement
 
             SetTarget(null);
         }
-        
-        #endregion
-
-
-        #region Private methods
 
         private void SetTarget(Transform target)
         {
-            _enemyMovement.SetTarget(target);
+            _movement.SetTarget(target);
         }
-
-        #endregion
     }
 }

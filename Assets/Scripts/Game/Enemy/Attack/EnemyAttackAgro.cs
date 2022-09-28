@@ -6,16 +6,9 @@ namespace ZombieLand.Game.Enemy.Attack
 {
     public class EnemyAttackAgro : MonoBehaviour
     {
-        #region Variables
-
         [SerializeField] private TriggerObserver _triggerObserver;
         [SerializeField] private EnemyAttack _attack;
-        [SerializeField] private EnemyFollow _enemyFollow;
-
-        #endregion
-
-
-        #region Unity lifecycle
+        [SerializeField] private EnemyFollow _follow;
 
         private void Start()
         {
@@ -23,23 +16,16 @@ namespace ZombieLand.Game.Enemy.Attack
             _triggerObserver.OnExited += OnExited;
         }
 
-        #endregion
-
-
-        #region Private methods
-
         private void OnEntered(Collider2D col)
         {
-            _enemyFollow.Deactivate();
+            _follow.Deactivate();
             _attack.Activate();
         }
 
         private void OnExited(Collider2D col)
         {
             _attack.Deactivate();
-            _enemyFollow.Activate();
+            _follow.Activate();
         }
-
-        #endregion
     }
 }

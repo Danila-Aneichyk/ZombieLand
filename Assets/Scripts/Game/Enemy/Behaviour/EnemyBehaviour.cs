@@ -6,7 +6,7 @@ namespace ZombieLand.Game.Enemy.Behaviour
     {
         #region Variables
 
-        private bool _isActive;
+        public bool IsActive { get; private set; }
 
         #endregion
 
@@ -15,24 +15,25 @@ namespace ZombieLand.Game.Enemy.Behaviour
 
         private void Update()
         {
-            if (_isActive)
-                OnUpdate();
+            OnUpdate();
+
+            if (IsActive)
+                OnActiveUpdate();
         }
 
         public virtual void Activate()
         {
-            _isActive = true;
+            IsActive = true;
         }
 
         public virtual void Deactivate()
         {
-            _isActive = false;
+            IsActive = false;
         }
 
-        protected virtual void OnUpdate()
-        {
-        }
-
-        #endregion
+        protected virtual void OnUpdate() { }
+        protected virtual void OnActiveUpdate() { }
     }
+
+    #endregion
 }

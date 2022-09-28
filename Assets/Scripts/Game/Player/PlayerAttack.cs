@@ -1,6 +1,4 @@
 using UnityEngine;
-using ZombieLand.Game.Enemy;
-using ZombieLand.Game.Enemy.Hp;
 
 namespace ZombieLand.Game.Player
 {
@@ -9,7 +7,6 @@ namespace ZombieLand.Game.Player
         #region Variables
 
         [SerializeField] private PlayerAnimation _playerAnimation;
-        [SerializeField] private EnemyHp _enemyHp;
         [SerializeField] private GameObject _bulletPrefab;
         [SerializeField] private Transform _bulletSpawnPositionTransform;
         [SerializeField] private float _fireDelay = 0.3f;

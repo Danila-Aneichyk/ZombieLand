@@ -5,22 +5,11 @@ namespace ZombieLand.Game.Enemy.Movement
     [RequireComponent(typeof(Rigidbody2D))]
     public class EnemyDirectMovement : EnemyMovement
     {
-        #region Variables
-
         [SerializeField] private float _speed = 4;
-
         [SerializeField] private Transform _target;
-
-        [SerializeField] private EnemyAnimation _enemyAnimation; 
-
-        private Rigidbody2D _rb;
-
+        
         private Transform _cachedTransform;
-
-        #endregion
-
-
-        #region Unity lifecycle
+        private Rigidbody2D _rb;
 
         private void Awake()
         {
@@ -42,45 +31,35 @@ namespace ZombieLand.Game.Enemy.Movement
             SetVelocity(Vector2.zero);
         }
 
-        #endregion
-
-
-        #region Private methods
-
         public override void SetTarget(Transform target)
         {
             _target = target;
-            Debug.Log("TargetSet");
+
             if (_target == null)
                 SetVelocity(Vector2.zero);
         }
 
-        #endregion
-
-
-        #region Private methods
-
-        private void RotateToTarget()
+        private bool IsTargetValid()
         {
-            Vector3 direction = (_target.position - _cachedTransform.position);
-            _cachedTransform.up = direction;
+            return _target != null;
         }
-
-        private bool IsTargetValid() =>
-            _target != null;
 
         private void MoveToTarget()
         {
             Vector3 direction = (_target.position - _cachedTransform.position).normalized;
             SetVelocity(direction * _speed);
-            _enemyAnimation.PlayWalk(direction.magnitude);
+        }
+
+        private void RotateToTarget()
+        {
+            Vector3 direction = _target.position - _cachedTransform.position;
+            _cachedTransform.up = direction;
         }
 
         private void SetVelocity(Vector2 velocity)
         {
             _rb.velocity = velocity;
+            SetAnimationSpeed(velocity.magnitude);
         }
-
-        #endregion
     }
 }
