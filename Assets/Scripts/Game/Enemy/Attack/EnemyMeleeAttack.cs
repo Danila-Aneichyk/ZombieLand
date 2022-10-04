@@ -8,7 +8,7 @@ namespace ZombieLand.Game.Enemy.Attack
     {
         [SerializeField] private EnemyAnimation _animation;
 
-        [SerializeField] private int _damage = 2;
+        [SerializeField] public int _damage = 2;
         [SerializeField] private float _attackDelay;
         [SerializeField] private Transform _attackPoint;
         [SerializeField] private float _radius;

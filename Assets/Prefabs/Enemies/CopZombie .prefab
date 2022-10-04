@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a9d0bf349a41a9860880222f95be54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _meleeAttack: {fileID: 0}
+  _meleeAttack: {fileID: 1230334948521726383}
 --- !u!1 &6052297236866641783
 GameObject:
   m_ObjectHideFlags: 0
