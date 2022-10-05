@@ -7,7 +7,7 @@ namespace ZombieLand.Game.Enemy
         #region Variables
 
         [SerializeField] private Animator _animator;
-        private static readonly int IsAttack = Animator.StringToHash("IsAttack");
+        private static readonly int Attack = Animator.StringToHash("Attack");
         private static readonly int Speed = Animator.StringToHash("Speed");
 
         #endregion
@@ -21,7 +21,7 @@ namespace ZombieLand.Game.Enemy
         }
 
         public void PlayAttack() =>
-            _animator.SetTrigger(IsAttack);
+            _animator.SetTrigger(Attack);
         public void SetSpeed(float speed)
         {
             _animator.SetFloat(Speed, speed);

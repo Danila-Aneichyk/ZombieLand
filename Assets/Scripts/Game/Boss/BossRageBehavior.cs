@@ -4,7 +4,7 @@ using ZombieLand.Game.Enemy.Hp;
 
 namespace ZombieLand.Game.Boss
 {
-    public class BossBehavior : MonoBehaviour
+    public class BossRageBehavior : EnemyAttack
     {
         #region Variables
 
