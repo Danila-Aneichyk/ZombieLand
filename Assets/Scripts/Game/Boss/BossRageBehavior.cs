@@ -22,7 +22,7 @@ namespace ZombieLand.Game.Boss
             _bossAttack = GetComponent<EnemyMeleeAttack>(); 
         }
 
-        private void Update()
+        private void OnEnable()
         {
             RageMode();
         }

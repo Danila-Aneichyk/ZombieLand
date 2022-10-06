@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using ZombieLand.Game.Boss;
 using ZombieLand.Game.Player;
 
 namespace ZombieLand.Game.Enemy.Attack
@@ -6,7 +7,7 @@ namespace ZombieLand.Game.Enemy.Attack
     public class EnemyMeleeAttack : EnemyAttack
     {
         [SerializeField] private EnemyAnimation _animation;
-
+        [SerializeField] private BossRageBehavior _bossRageBehavior; 
         [SerializeField] public int _damage = 2;
         [SerializeField] private float _attackDelay;
         [SerializeField] private Transform _attackPoint;
@@ -58,6 +59,7 @@ namespace ZombieLand.Game.Enemy.Attack
         {
             _delayTimer = _attackDelay;
             _animation.PlayAttack();
+            _bossRageBehavior.Activate();
         }
     }
 }
