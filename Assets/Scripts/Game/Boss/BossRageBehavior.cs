@@ -9,22 +9,33 @@ namespace ZombieLand.Game.Boss
         #region Variables
 
         private EnemyHp _bossHp;
-        private EnemyMeleeAttack _bossAttack; 
+        private EnemyMeleeAttack _bossAttack;
+        private bool _isInRage;     
 
         #endregion
-
 
         #region Unity lifecycle
 
         private void Awake()
         {
             _bossHp = GetComponent<EnemyHp>();
-            _bossAttack = GetComponent<EnemyMeleeAttack>(); 
+            _bossAttack = GetComponent<EnemyMeleeAttack>();
+            _bossHp.OnChanged += HpChanged; 
         }
 
-        private void OnEnable()
+        public override void Activate()
         {
+            base.Activate();
+            
             RageMode();
+            _bossAttack.Activate();
+        }
+
+        public override void Deactivate()
+        {
+            base.Deactivate();
+            
+            _bossAttack.Deactivate();
         }
 
         #endregion
@@ -32,9 +43,17 @@ namespace ZombieLand.Game.Boss
 
         #region Private methods
 
+        private void HpChanged(int hp)
+        {
+            if (IsActive)
+            {
+                RageMode();
+            }
+        }
+
         private void RageMode()
         {
-            if (_bossHp.CurrentHp<20)
+            if (!_isInRage && _bossHp.CurrentHp < 20)
             {
                 EnterRageMode();
             }

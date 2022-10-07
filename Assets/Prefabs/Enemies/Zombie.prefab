@@ -282,7 +282,7 @@ MonoBehaviour:
   _animation: {fileID: 8543283912666031947}
   _damage: 2
   _attackDelay: 1
-  _attackPoint: {fileID: 0}
+  _attackPoint: {fileID: 4681109000257520474}
   _radius: 1
   _layerMask:
     serializedVersion: 2
