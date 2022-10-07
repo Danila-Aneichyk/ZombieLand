@@ -8,7 +8,6 @@ namespace ZombieLand.Game.Player
         #region Variables
 
         [SerializeField] private PlayerAnimation _playerAnimation;
-
         [SerializeField] private float _speed = 4f;
         private Transform _cachedTransform;
         private Camera _mainCamera;
