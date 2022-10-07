@@ -32,6 +32,11 @@ namespace ZombieLand.Game.Player
             Rotate();
         }
 
+        private void OnDisable()
+        {
+            _rb.velocity = Vector2.zero; 
+        }
+
 
         #region Private methods
 
